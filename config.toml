@@ -1,0 +1,30 @@
+# DuckQuake configuration. Shared by the relay and the helper scripts.
+
+[data]
+# Everything that is not code lives outside the repo.
+dir = "~/DuckQuake/data"
+
+[source]
+# EarthScope SeedLink. Verified 2026-09-25: UO.DUCK1-3 HN? at 200 Hz.
+host = "rtserve.earthscope.org"
+port = 18000
+network = "UO"
+stations = ["DUCK1", "DUCK2", "DUCK3"]
+location = ""
+channels = "HN?"
+
+# FDSN web service used for archive downloads and station metadata.
+[fdsn]
+client = "EARTHSCOPE"
+
+# Named archive windows, in UTC. Used by scripts/download_archive.py and by
+# the relay's replay mode. Pacific time in September is UTC-7.
+[archive.psu_game]
+description = "Portland State home game, Fri 2026-09-18. Kickoff 19:30 PT, end 23:56 PT. Window is 2 h before kickoff to ~1 h after the end."
+start = "2026-09-19T00:30:00"
+end = "2026-09-19T08:00:00"
+
+[archive.quiet_weekday]
+description = "Noise baseline. Wed 2026-09-23, same hours as psu_game. Archive begins 2026-09-18 UTC, so no earlier weekday exists."
+start = "2026-09-24T00:30:00"
+end = "2026-09-24T08:00:00"
